@@ -142,12 +142,6 @@ for (i = 0; i < dizi.length; i++) {
 });*/
 
 
-/**
- * JAVASCRİPT ADD CSS
- * ÖĞRENDİĞİM KADARIYLA SADECE getelementbyid İLE OLUYOR.
- */
-
-
 /*const h_tag = document.querySelector("#h_tag");
 h_tag.textContent = "H1 ETİKETİ";
 
