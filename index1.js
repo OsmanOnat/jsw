@@ -142,6 +142,25 @@ class Deneme {
         });
     }
 
+    /**
+     * İnputtaki değeri eş zamanlı ekrana basar.
+     */
+
+    text_keyup_write() {
+        var keyup_deneme = document.getElementById("keyup_deneme"); //input name
+        var yazdir = document.getElementById("keyup_yazdir"); // input value write div id
+
+        keyup_deneme.addEventListener("keyup", () => {
+            var x = keyup_deneme.value; //inputtaki değeri okuduk.
+            yazdir.innerText = x;
+        });
+    }
+
+    try_for() {
+        for (var i = 0; i < 10; i++) {
+            console.log(i);
+        }
+    }
 
 
 }
@@ -153,22 +172,19 @@ deneme.title_change_new_tab("denemetitle");
 //deneme.button_page_close("deneme_button");
 //deneme.create_element("div", "", "", "", "");
 //deneme.create_element("div", "id_deneme", "class_deneme", "tamadır bu");
+//deneme.try_for();
+deneme.text_keyup_write();
 
 var deneme_array = [
     "div", "p", "a", "button"
 ];
 
+
 //deneme.attribute_control("a", deneme_array);
 
-/*console.log(attributes_array.length);
+//console.log(attributes_array.length);
 
-for (i = 0; i < attributes_array.length; i++) {
-    if (attributes_array[i] == "div") {
-        console.log(attributes_array[i] + " değeri bulundu!");
-    } else {
-        console.log(attributes_array[i]);
-    }
-}*/
+
 
 var dizi = [
     'osman', 'onat', 1234
