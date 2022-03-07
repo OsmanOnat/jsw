@@ -32,6 +32,20 @@ class Deneme {
         );
     }
 
+    /**
+     * İnputtaki değeri eş zamanlı ekrana basar.
+     */
+
+    text_keyup_write() {
+        var keyup_deneme = document.getElementById("keyup_deneme"); //input name
+        var yazdir = document.getElementById("keyup_yazdir"); // input value write div id
+
+        keyup_deneme.addEventListener("keyup", () => {
+            var x = keyup_deneme.value; //inputtaki değeri okuduk.
+            yazdir.innerText = x;
+        });
+    }
+
     attribute_control(attribute_name = "", attribute_array = []) {
         var i;
         for (i = 0; i < attribute_array.length; i++) {
@@ -139,20 +153,6 @@ class Deneme {
         var button = document.getElementById(button_id);
         button.addEventListener("click", function() {
             console.log("click event");
-        });
-    }
-
-    /**
-     * İnputtaki değeri eş zamanlı ekrana basar.
-     */
-
-    text_keyup_write() {
-        var keyup_deneme = document.getElementById("keyup_deneme"); //input name
-        var yazdir = document.getElementById("keyup_yazdir"); // input value write div id
-
-        keyup_deneme.addEventListener("keyup", () => {
-            var x = keyup_deneme.value; //inputtaki değeri okuduk.
-            yazdir.innerText = x;
         });
     }
 
