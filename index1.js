@@ -11,30 +11,75 @@ class Deneme {
         //document.createTextNode("Şuanda Çevrimiçi"); //yeni bir TEXT_NODE (metin düğümü) oluşturulmasını sağlar.
         */
 
-        var status = {
-            ONLINE: 0,
-            OFFLINE: 1,
-        };
-        Object.freeze(status);
-
-        var status_message = {
-            online_message: "Şuanda Çevrimiçi",
-            offline_message: "Şuanda Çevrimdışı",
-        };
-        Object.freeze(status_message);
-
         document.writeln(this.entry_message);
 
         this.element_div = document.createElement("div");
         this.element_p = document.createElement("p");
         this.element_br = document.createElement("br");
 
+        this.status_control_enum = Object.freeze({
+            STATUS_ONLINE: true,
+            STATUS_OFFLINE: false,
+        });
+
+        this.status_control_message_enum = Object.freeze({
+            STATUS_ONLINE_MESSAGE: "İnternet Bağlantınız Var.",
+            STATUS_OFFLINE_MESSAGE: "İnternet Bağlantınız Kesildi!",
+        });
+
 
     }
+
+    /**
+     * Başka Sekmeye geçince başlık değişir.
+     * @param {string} title_value      Yeni Başlık ismini girin. 
+     */
+
+    title_change_new_tab(title_value) {
+        var default_title = document.title;
+        var new_title = title_value;
+
+        window.addEventListener("blur", () => {
+            document.title = new_title;
+        });
+
+        /*window.addEventListener("blur", function(){
+            default_title = new_title;
+        });*/
+
+        window.addEventListener("focus", function() {
+            document.title = default_title;
+        });
+    }
+
+    /**
+     * İnternet Bağlantısının olup olmadığını kontrol eder.
+     * 
+     */
 
     status_controller() {
         window.addEventListener("load", function() {
 
+            var div = this.document.getElementById("status");
+
+            window.addEventListener("online", function() {
+                //document.writeln("Bağlantı Var");
+                div.style.display = "none";
+            });
+
+            window.addEventListener("offline", function() {
+                document.getElementById("status").innerHTML = "İnternet Bağlantınız Kesildi!";
+                /*div.appendChild(
+                    document.createTextNode("Sayfayı Yenileyin !")
+                );*/
+                div.style.display = "block";
+            });
+
+        });
+    }
+
+    status_controller_2() {
+        window.addEventListener("load", function() {
             var div = this.document.getElementById("status");
             var detection = this.navigator.onLine;
 
@@ -43,63 +88,36 @@ class Deneme {
                 div.style.display = "none";
             }
             if (detection == false) {
-                this.document.getElementById("status").innerHTML = "İnternet Bağlantınız Kesildi ! <br>";
+                document.getElementById("status").innerHTML = "İnternet Bağlantınız Kesildi ! <br>";
                 div.appendChild(
-                    this.document.createTextNode("Sayfayı Yenileyin !")
+                    document.createTextNode("Sayfayı Yenileyin !")
                 );
                 div.style.display = "block";
             }
-
         });
     }
 
-    status_controller_2() {
-        var div2 = this.document.getElementById("status");
+    page_close(message) {
+        var decision = confirm(message);
+        decision == true ? window.close() : "";
+    }
 
-        window.addEventListener("online", function() {
-            div2.innerHTML = "Çevrimiçi";
-            div2.style.display = "none";
-        });
-
-        window.addEventListener("offline", function() {
-            div2.innerHTML = "İnternet Bağlantınız Kesildi !";
-            div2.style.display = "block";
+    button_page_close(button_id) {
+        var button = document.getElementById(button_id);
+        button.addEventListener("click", function() {
+            console.log("click event");
         });
     }
 
-    create_element(color) {
-        const div = document.createElement("div");
-        div.style.width = "100px";
-        div.style.height = "100px";
-        div.style.background = color;
-        document.body.appendChild(div);
-    }
 
-    get_id_add_classname(id, add_classname) {
-        const get_id = document.getElementById(id);
-        get_id.classList.add(add_classname);
-
-        //get_id.className += "class_name";
-    }
-
-    createDiv(value) {
-        const attribute = document.createElement("p");
-        attribute.innerText = value;
-        document.body.appendChild(attribute);
-    }
-
-    Message(message) {
-        document.writeln(this.auto_message);
-        this.createDiv(message);
-    }
 
 }
 
 var deneme = new Deneme();
-//deneme.Message("Merhaba Ben Osman Onat");
-//deneme.create_element();
 deneme.status_controller();
-//deneme.status_controller_2();
+deneme.title_change_new_tab("denemetitle");
+//deneme.page_close("Sayfayı Kapatacakmısın ?");
+//deneme.button_page_close("deneme_button");
 
 var dizi = [
     'osman', 'onat', 1234
