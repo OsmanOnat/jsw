@@ -27,7 +27,41 @@ class Deneme {
             STATUS_OFFLINE_MESSAGE: "İnternet Bağlantınız Kesildi!",
         });
 
+        this.attributes_array = new Array(
+            "div", "a", "p", "button"
+        );
+    }
 
+    attribute_control(attribute_name = "", attribute_array = []) {
+        var i;
+        for (i = 0; i < attribute_array.length; i++) {
+            if (attribute_array[i] == attribute_name) {
+                console.log(attribute_array[i] + " değeri bulundu!");
+                return true;
+            }
+        }
+    }
+
+
+    create_element(attribute = "", id = "", classname = "", message = "") {
+        if (attribute === "" || attribute == null || attribute == undefined) {
+            console.log("Attribute ismini kontrol et");
+        } else {
+
+            if (this.attribute_control(attribute, this.attributes_array) == true) {
+
+                var create = document.createElement(attribute);
+                create.id = id;
+                create.className = classname;
+                create.innerHTML = message;
+
+                document.body.appendChild(create);
+
+            } else {
+                console.log("Attribute dizide yok . kontrol et");
+            }
+
+        }
     }
 
     /**
@@ -54,7 +88,6 @@ class Deneme {
 
     /**
      * İnternet Bağlantısının olup olmadığını kontrol eder.
-     * 
      */
 
     status_controller() {
@@ -118,6 +151,24 @@ deneme.status_controller();
 deneme.title_change_new_tab("denemetitle");
 //deneme.page_close("Sayfayı Kapatacakmısın ?");
 //deneme.button_page_close("deneme_button");
+//deneme.create_element("div", "", "", "", "");
+//deneme.create_element("div", "id_deneme", "class_deneme", "tamadır bu");
+
+var deneme_array = [
+    "div", "p", "a", "button"
+];
+
+//deneme.attribute_control("a", deneme_array);
+
+/*console.log(attributes_array.length);
+
+for (i = 0; i < attributes_array.length; i++) {
+    if (attributes_array[i] == "div") {
+        console.log(attributes_array[i] + " değeri bulundu!");
+    } else {
+        console.log(attributes_array[i]);
+    }
+}*/
 
 var dizi = [
     'osman', 'onat', 1234
