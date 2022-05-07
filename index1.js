@@ -190,7 +190,7 @@ var dizi = [
     'osman', 'onat', 1234
 ];
 
-var enum_1 = {
+let enum_1 = {
     1: "osman",
     2: "onat"
 };
