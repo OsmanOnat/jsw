@@ -1,11 +1,20 @@
 const butonlar = document.querySelectorAll('.soru_button');
+const btn_2 = document.querySelector('.soru_button');
+
+for (var i = 0; i < butonlar.length; i++) {
+    /**
+     * querySelectorAll sadece class isimlerini aldık.
+     */
+    console.log(butonlar[i].attributes[0].textContent);
+
+}
 
 butonlar.forEach(function(e) {
     e.addEventListener('click', function() {
         if (e.classList.contains('active')) {
 
             /**
-             * eğerki active değeri aynı butonda varsa 
+             * eğerki active değeri aynı butonda varsa
              */
 
             console.log(e.classList + ' var');
@@ -18,7 +27,7 @@ butonlar.forEach(function(e) {
                 /**
                  * Eğerki active değeri yoksa ;
                  * butona tıklanıldığında active değeri girilir.
-                 * 
+                 *
                  *Tıkladığın buton hariç diğer butonlardan class isimlerinden active class'ını sil
                  */
 
@@ -26,7 +35,7 @@ butonlar.forEach(function(e) {
 
             });
             /**
-             * Tıkladığın butona active değeri ver . 
+             * Tıkladığın butona active değeri ver .
              */
             console.log('en son tıkladığınız butona active değeri eklendi! ' + e.classList);
             e.classList.add('active');
