@@ -17,8 +17,8 @@ function getLocation(e){
     var areaRight = areaGetRect.right;
     var areaBottom = areaGetRect.bottom;
 
-    var ballX = (x - areaX); // ball'un area(alan) içerisinde x koordinat bulunması
-    var ballY = (y - areaY); // ball'un area(alan) içerisinde y koordinat bulunması
+    var ballX = (x - areaX); // area(alan) içerisinde x koordinat bulunması (ball dışarı çıkmasın)
+    var ballY = (y - areaY); // area(alan) içerisinde y koordinat bulunması (ball dışarı çıkmasın)
 
     var ballResult = ballX - ballY;
     ball.style.left = ballX+'px';
@@ -33,10 +33,8 @@ function getLocation(e){
 
     /*console.log(result);
     console.log("Area : " + (areaX - areaY));
-
     ball.style.left = x+'px';
     ball.style.top = y+'px';
-
     console.log('x = ' + x);
     console.log('y = ' + y);
     console.log('ball = ' + (x - y));*/
@@ -48,24 +46,17 @@ area.addEventListener('mousemove' , getLocation);
 
 
 /*area.addEventListener('click' , function (event){
-
     var mouseX = event.clientX - areaGetRect.left;
     var mouseY = event.clientY - areaGetRect.top;
-
     area
-
     ball.style.left = mouseX+'px';
     ball.style.top = mouseY+'px';
-
     if(mouseX <= 10 || mouseX >= 390 ){
         ball.style.left = '100px';
         console.log('Dışarı Çıkma');
     }
-
-
     console.log(mouseX);
     console.log(mouseY);
-
 });*/
 
 console.log(areaGetRect);
