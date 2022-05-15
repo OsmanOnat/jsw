@@ -1,5 +1,4 @@
-let messages = [
-    {
+let messages = [{
         title: 'title-1',
         description: 'desc-1',
     },
@@ -15,31 +14,30 @@ let messages = [
 
 let message_div = document.getElementsByClassName('message-div')[0];
 
-function tryPromise(dizi = []){
-    return new Promise((resolve, reject) =>{
-        setTimeout(function (){
-            for(let i=0;i<messages.length; i++) {
+function tryPromise(dizi = []) {
+    return new Promise((resolve, reject) => {
+        setTimeout(function() {
+            for (let i = 0; i < messages.length; i++) {
                 dizi[i] = messages[i].title;
             }
             const err = false;
 
-            if(!err){
+            if (!err) {
                 resolve(dizi); //response parametresinde kullanacağım
-            }
-            else{
+            } else {
                 reject('Bir hata oluştu');
             }
             console.log(dizi);
-        } , 2000);
+        }, 2000);
     });
 }
 
 tryPromise()
-    .then(function (response){
+    .then(function(response) {
         console.log('Success');
         console.log('Yeni Dizi : ' + response);
     })
-    .catch(function (e){
+    .catch(function(e) {
         console.log('Failed ' + e)
     });
 
