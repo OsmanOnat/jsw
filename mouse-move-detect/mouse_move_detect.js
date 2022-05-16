@@ -16,7 +16,7 @@ function mouseMoveControl(time) {
 function windowControl() {
     window.addEventListener('blur', function() {
         /**
-         * Aynı sayfada ise
+         * Farklı sayfaya geçtiyse
          */
     });
     window.addEventListener('focus', function() {
